@@ -13,8 +13,8 @@ import pickle
 from os                                 import path
 from subprocess                         import getoutput, getstatusoutput
 
-WCLRanks_path = "../WCLRanks"
-WCLRanks_toc = "WCLRanks.toc"
+WCLRanks_path = "../wclRanks-zhCN-by-defy"
+WCLRanks_toc = "WCLRanksByDefyZhCN.toc"
 toc = open("%s/%s" % (WCLRanks_path, WCLRanks_toc), "w+")
 
 date_version = datetime.date.today().strftime("%Y%m%d")
@@ -31,7 +31,12 @@ with open(WCLRanks_toc) as fp:
 toc.close()
 
 # copy data
-getoutput("cp -a Data %s/" % WCLRanks_path)
+
+# linux
+#getoutput("cp -a Data %s/" % WCLRanks_path)
+
+# win
+getoutput("cp -Recurse -Force Data %s/" % WCLRanks_path)
 
 # ## Version: 1.0.20211009
 version = version.replace("## Version: ","")

@@ -1,8 +1,8 @@
 ## Interface: 30400
 ## Interface-Wrath: 30400
-## Title: WCLRanks
+## Title: WCLRanksByDefyZhCN
 ## Version: 2.0.__DATE__
-## Author: acelan@acelan.idv.tw
+## Author: defy
 ## DefaultState: enabled
 
 Libs\LibStub\LibStub.lua
