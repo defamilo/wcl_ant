@@ -14,7 +14,7 @@ requests.packages.urllib3.disable_warnings()
 
 authorize_url = "https://www.warcraftlogs.com/oauth/authorize"
 token_url = "https://www.warcraftlogs.com/oauth/token"
-api_url = "https://tw.classic.warcraftlogs.com/api/v2/client"
+api_url = "https://cn.classic.warcraftlogs.com/api/v2/client"
 
 data = {'grant_type': 'client_credentials'}
 access_token_response = requests.post(token_url, data=data, verify=False, allow_redirects=False, auth=(client_id, client_secret))
@@ -61,7 +61,7 @@ def gen_query_code(server_name, users, guilds, starttime):
 
     if guilds:
         for guild in guilds:
-            query += "g%s: reports(guildName: \"%s\",  guildServerSlug: \"%s\", guildServerRegion: \"tw\", startTime: %s) { data { code }} \n" % (idx, guild, server_name, starttime)
+            query += "g%s: reports(guildName: \"%s\",  guildServerSlug: \"%s\", guildServerRegion: \"cn\", startTime: %s) { data { code }} \n" % (idx, guild, server_name, starttime)
             idx += 1
 
     query += "}}"
@@ -108,7 +108,7 @@ def gen_query_user(server_name, username, userdata):
                     elif "H: " in zone:
                         h_metric = metric
 
-            query += "c%s: character(name: \"%s\", serverRegion:\"tw\", serverSlug: \"%s\") { id name " % (idx, name, server_name)
+            query += "c%s: character(name: \"%s\", serverRegion:\"cn\", serverSlug: \"%s\") { id name " % (idx, name, server_name)
             query += "K_Naxx_Sarth_Maly_10: zoneRankings(zoneID: 1015, size: 10, partition: %s, metric: %s), " % (partition, k_metric)
             query += "Z_Naxx_Sarth_Maly_25: zoneRankings(zoneID: 1015, size: 25, partition: %s, metric: %s), " % (partition, k_metric)
             query += "} \n"
@@ -168,7 +168,7 @@ def query_username(report_code):
     return username
 
 def add_color_code(name, percent):
-    if percent == 100 or name in my_name:
+    if percent == 100 or name in '':
         return "A"
     elif percent >= 99:
         return "S"
