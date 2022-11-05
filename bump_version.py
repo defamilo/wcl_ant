@@ -36,7 +36,7 @@ toc.close()
 #getoutput("cp -a Data %s/" % WCLRanks_path)
 
 # win
-getoutput("cp -Recurse -Force Data %s/" % WCLRanks_path)
+getoutput("cp -rf Data %s/" % WCLRanks_path)
 
 # ## Version: 1.0.20211009
 version = version.replace("## Version: ","")
